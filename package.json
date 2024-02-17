@@ -1,0 +1,35 @@
+{
+  "name": "namaste-arun",
+  "version": "1.0.0",
+  "description": "React projects library from Arun Viswanathan",
+  "main": "App.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arunviswam88/ReactPlays.git"
+  },
+  "keywords": [
+    "React",
+    "Arun",
+    "Viswanathan"
+  ],
+  "author": "Arun Viswanathan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/arunviswam88/ReactPlays/issues"
+  },
+  "homepage": "https://github.com/arunviswam88/ReactPlays#readme",
+  "devDependencies": {
+    "parcel": "^2.11.0",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "browserslist": [
+    "last 2 versions"
+  ]
+}
