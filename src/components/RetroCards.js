@@ -1,9 +1,11 @@
+import { IMAGE_URL } from "../utils/env";
+
 const RestroCards = (props) => {
     const { info } = props.restroData;
     return (
         <div className='restro-cards'>
             <div className='food'>
-                <img src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/"+info.cloudinaryImageId}></img>
+                <img src={IMAGE_URL+info.cloudinaryImageId}></img>
             </div>
             <div className='food-info'>
                 <div className='items name'>{info.name}</div>
