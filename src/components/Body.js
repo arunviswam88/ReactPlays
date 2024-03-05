@@ -1,7 +1,8 @@
 import RestroCards from "./RetroCards";
-import restroCards from "../utils/mockData";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
+import { REST_ITEMS } from "../utils/env";
+import { Link } from "react-router-dom";
 
 const Body = () => {
     const [items,setItems]= useState([]);
@@ -17,7 +18,7 @@ const Body = () => {
     },[]);
 
     const fetchData = async() => {
-         const data = await fetch('https://www.swiggy.com/dapi/restaurants/list/v5?lat=8.88140&lng=76.58500&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING')
+         const data = await fetch(REST_ITEMS)
 
          const json = await data.json();
          const restaurants = json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants;
@@ -27,7 +28,6 @@ const Body = () => {
 
     const handleSearch = () => {
         const filteredData = initial.filter(element => element.info.name.toLowerCase().includes(search.toLowerCase()));
-        console.log(filteredData);
         setItems(filteredData);
     }
     return items.length === 0 ? <Shimmer/> :
@@ -44,7 +44,7 @@ const Body = () => {
             </div>
             <div className='hotels'>
                 {
-                    items.map((item) => <RestroCards  key={item.info.id} restroData={item}/>)
+                    items.map((item) => <Link to={"/restaurant/"+item.info.id}  key={item.info.id}><RestroCards restroData={item}/></Link>)
                 }
             </div>
         </div>
