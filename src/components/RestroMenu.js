@@ -2,19 +2,15 @@ import { useEffect, useState } from "react";
 import { REST_MENU } from "../utils/env";
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
+import useRestroMenu from "../utils/useRestroMenu";
 
 const RestroMenu = () => {
-    const [restroMenu,setRestroMenu] = useState(null);
+    
     const { restroID } = useParams();
-    useEffect( ()=> {
-        fetchMenu();
-    },[]);
 
-    fetchMenu = async () => {
-        const menu = await fetch(REST_MENU+restroID);
-        const menuJSON = await menu.json();
-        setRestroMenu(menuJSON); 
-    }
+    const restroMenu = useRestroMenu(restroID);
+
+   
 
      if(restroMenu === null) return (<Shimmer />)
 

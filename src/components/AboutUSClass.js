@@ -3,11 +3,18 @@ class AboutUSClass extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            count: 0
+            userInfo: {
+                name: 'Dummy name',
+                location: 'Default'
+            }
         }
     }
-    componentDidMount() {
-        console.log("Mount");
+    async componentDidMount() {
+        const data = await fetch('https://api.github.com/users/arunviswam88');
+        const user = await data.json();
+        this.setState({
+            userInfo: user
+        });
     }
     componentDidUpdate() {
         console.log("Update");
@@ -16,9 +23,9 @@ class AboutUSClass extends React.Component {
         const {name} = this.props;
         return(
             <div className="aboutus">
-                <h1>About US - {name} - {this.state.count}</h1>
-                <h3> Here we are going to show the about us sectiop</h3>
-                <button onClick={()=>{this.setState({count: this.state.count +1})}}>Increment</button>
+                <h1>About US - {this.state.userInfo.name} </h1>
+                <img src={this.state.userInfo.avatar_url} width={200} height={200}></img>
+                <h3> Location: {this.state.userInfo.location}</h3>
             </div>
         )
     }
